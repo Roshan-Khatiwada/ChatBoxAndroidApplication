@@ -29,7 +29,7 @@ private TextView textView;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent intent=new Intent(Splash_Screen.this,MainActivity.class);
+                Intent intent=new Intent(Splash_Screen.this,login_phoneNumber.class);
                 startActivity(intent);
                 Splash_Screen.this.finish();
 
