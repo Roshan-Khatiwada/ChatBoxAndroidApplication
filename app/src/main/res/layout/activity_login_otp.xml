@@ -6,10 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:weightSum="100"
     tools:context=".login_phoneNumber"
     tools:ignore="ExtraText">
-
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/black"
+            android:id="@+id/toolbar"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="2"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -119,10 +122,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Verify OTP"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/baloo_chettan"
             android:backgroundTint="@color/secondary"
             android:layout_margin="20dp"
+            android:textSize="16sp"
             android:id="@+id/verifyOTP_btn"
             />
     </LinearLayout>
@@ -132,15 +136,5 @@
         android:id="@+id/loginProgressBar"
         />
 
-    <TextView
-        android:id="@+id/myTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Developed by Tech Nexus"
-        android:textColor="@color/black"
-        android:textSize="11sp"
-        tools:ignore="TextSizeCheck" />
+
 </LinearLayout>

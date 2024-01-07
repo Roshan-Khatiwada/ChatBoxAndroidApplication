@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="1"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -111,7 +111,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/rounded_corner"
             android:elevation="10dp"
-            android:hint="mobile"
+            android:hint="Mobile"
             android:inputType="phone"
             android:minHeight="48dp"
             android:padding="10dp" />
@@ -126,28 +126,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Send OTP"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/baloo_chettan"
+            android:textSize="16sp"
             android:backgroundTint="@color/secondary"
             android:layout_margin="20dp"
             android:id="@+id/sendOTPbtn"
             />
     </LinearLayout>
-    <ProgressBar
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:id="@+id/loginProgressBar"
-        />
 
-    <TextView
-        android:id="@+id/myTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Developed by Tech Nexus"
-        android:textColor="@color/black"
-        android:textSize="11sp"
-        tools:ignore="TextSizeCheck" />
+    <ProgressBar
+        android:id="@+id/loginProgressBar"
+        android:layout_width="32dp"
+        android:layout_height="33dp" />
+
+
 </LinearLayout>
