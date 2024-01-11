@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Chatbox"
         tools:targetApi="31">
         <activity
+            android:name=".Message_interface"
+            android:exported="false" />
+        <activity
             android:name=".Search"
             android:exported="false" />
         <activity
@@ -38,6 +41,21 @@
             android:exported="false">
 
         </activity>
+        <activity
+            android:name=".ScoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SetsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Question"
+            android:exported="false" />
+        <activity
+            android:name=".Category"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
 
         <meta-data
             android:name="preloaded_fonts"

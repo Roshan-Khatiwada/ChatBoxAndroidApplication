@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+    <ImageButton
+        android:id="@+id/quiz"
+        android:layout_margin="0dp"
+        android:padding="15dp"
+        android:background="@drawable/rounded_corner_for_dialog_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/test_svgrepo_com" />
+
+    <TextView
+        android:id="@+id/quizname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quiz"
+
+        android:fontFamily="@font/baloo_chettan"
+        android:textSize="16sp"
+        android:gravity="center"/>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/tictactoe"
+            android:layout_margin="0dp"
+            android:padding="15dp"
+            android:background="@drawable/rounded_corner_for_dialog_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/test_svgrepo_com" />
+
+        <TextView
+            android:id="@+id/quiznamee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quiz"
+            android:fontFamily="@font/baloo_chettan"
+            android:textSize="16sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</LinearLayout>

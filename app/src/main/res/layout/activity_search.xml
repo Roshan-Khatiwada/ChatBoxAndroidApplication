@@ -39,7 +39,8 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/searchuser">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/filledTextField"
@@ -54,7 +55,26 @@
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toLeftOf="@+id/username_edittext"
+            android:padding="10dp"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/search_btn"
+            tools:ignore="NotSibling" />
 
     </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchuser"
+        android:padding="10dp"
+        android:id="@+id/search_user_recycler_view"
+        />
 
 </RelativeLayout>

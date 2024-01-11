@@ -1,14 +1,22 @@
 package com.example.chatbox.Model;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 
 public class UserModel {
-    public String getUsername() {
-        return username;
+    private String phone;
+    private String username;
+    private Timestamp createdTimestamp;
+    private String userId;
+
+
+    public UserModel() {
     }
 
-    public void setUsername(String username) {
+    public UserModel(String phone, String username, Timestamp createdTimestamp,String userId) {
+        this.phone = phone;
         this.username = username;
+        this.createdTimestamp = createdTimestamp;
+        this.userId = userId;
     }
 
     public String getPhone() {
@@ -19,21 +27,30 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public Timestamp getCreatedTimeStamp() {
-        return createdTimeStamp;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCreatedTimeStamp(Timestamp createdTimeStamp) {
-        this.createdTimeStamp = createdTimeStamp;
-    }
-
-    String username;
-    String phone;
-    Timestamp createdTimeStamp;
-
-    public UserModel(String username, String phone, Timestamp createdTimeStamp) {
+    public void setUsername(String username) {
         this.username = username;
-        this.phone = phone;
-        this.createdTimeStamp = createdTimeStamp;
     }
+
+    public Timestamp getCreatedTimestamp() {
+        return createdTimestamp;
+    }
+
+    public void setCreatedTimestamp(Timestamp createdTimestamp) {
+        this.createdTimestamp = createdTimestamp;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+
+
 }

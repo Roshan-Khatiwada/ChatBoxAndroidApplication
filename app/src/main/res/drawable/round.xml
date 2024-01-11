@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/rounded_border.xml -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background color -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#345C5959" /> <!-- Set your background color here -->
+            <corners android:radius="20dp" /> <!-- Set the corner radius for rounded corners -->
+        </shape>
+    </item>
+
+    <!-- Border -->
+    <item android:right="1dp" android:left="1dp" android:top="1dp" android:bottom="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#00FFFFFF" /> <!-- Transparent color for the inside area -->
+            <stroke
+                android:width="0dp"
+                android:color="@color/colorPrimaryDark" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+</layer-list>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/baloo_bhai_2_semibold</item>
+        <item>@font/baloo_bhaina_2</item>
         <item>@font/baloo_chettan</item>
     </array>
 </resources>

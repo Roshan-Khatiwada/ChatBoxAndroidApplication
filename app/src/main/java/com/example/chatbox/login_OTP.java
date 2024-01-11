@@ -80,7 +80,7 @@ public class login_OTP extends AppCompatActivity {
 
     private void checkIfUserExists(String phoneNumber) {
         db.collection("Registration")
-                .whereEqualTo("Phone Number", phoneNumber)
+                .whereEqualTo("phone", phoneNumber)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
