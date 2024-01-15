@@ -1,14 +1,15 @@
 package com.example.chatbox;
 
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.os.Handler;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.chatbox.Model.UserModel;
+import com.example.chatbox.Utils.AndroidUtils;
+import com.example.chatbox.Utils.FirebaseUtils;
 
 public class Splash_Screen extends AppCompatActivity {
 
@@ -20,38 +21,36 @@ public class Splash_Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        imageView = findViewById(R.id.imageView5); // Replace with the actual ID of your ImageView
+        if(getIntent().getExtras()!=null){
+            //from notification
+            String userId = getIntent().getExtras().getString("userId");
+            FirebaseUtils.allUserCollectionReference().document(userId).get()
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()){
+                            UserModel model = task.getResult().toObject(UserModel.class);
 
-        // Use the slower scale-up animation for the TextView
-        Animation anim = AnimationUtils.loadAnimation(this, R.anim.anim);
+                            Intent mainIntent = new Intent(this,MainActivity.class);
+                            mainIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            startActivity(mainIntent);
+
+                            Intent intent = new Intent(this, Message_interface.class);
+                            AndroidUtils.passUserModelAsIntent(intent,model);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
 
 
-        // Use ValueAnimator for scaling both TextView and ImageView
-        ValueAnimator scaleAnimator = ValueAnimator.ofFloat(1f, 1.1f);
-        scaleAnimator.setDuration(5000); // 5 seconds
-        scaleAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float scale = (float) animation.getAnimatedValue();
-
-                imageView.setScaleX(scale);
-                imageView.setScaleY(scale);
-            }
-        });
-        scaleAnimator.start();
-
-        new Thread() {
-            @Override
-            public void run() {
-                try {
-                    sleep(5000); // Wait for 5 seconds
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        }else{
+            new Handler().postDelayed(() -> {
+                if(FirebaseUtils.isLoggedIn()){
+                    startActivity(new Intent(Splash_Screen.this,ChatsListActivity.class));
+                }else{
+                    startActivity(new Intent(Splash_Screen.this,login_phoneNumber.class));
                 }
-                Intent intent = new Intent(Splash_Screen.this, login_phoneNumber.class);
-                startActivity(intent);
-                Splash_Screen.this.finish();
-            }
-        }.start();
+                finish();
+            },1000);
+        }
     }
 }

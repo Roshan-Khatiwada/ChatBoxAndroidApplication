@@ -1,18 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    tools:context=".Profile"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textSize="40sp"
-        android:layout_centerInParent="true"
+    <ImageView
+        android:id="@+id/profile_Pic"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/profile"
+        android:background="@drawable/circular_bg"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="30dp"
         />
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_corner"
+        android:elevation="10dp"
+        android:hint="Username"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="10dp" />
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_corner"
+        android:elevation="10dp"
+        android:hint="Phone"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:enabled="false"
+        android:padding="10dp" />
 
+        <Button
+            android:id="@+id/updateProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:textColor="@color/white"
+            android:fontFamily="@font/baloo_chettan"
+            android:textSize="16sp"
+            android:backgroundTint="@color/secondary"
+            android:layout_margin="20dp"
+            />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log out"
+            android:id="@+id/logout"
+            />
 
-</RelativeLayout>
+</LinearLayout>

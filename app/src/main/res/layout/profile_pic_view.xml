@@ -5,14 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
+        android:id="@+id/profile_pic_image_view"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:background="@drawable/circular_bg"
-        android:src="@drawable/profile"
-        android:padding="4dp"
-        android:backgroundTint="#fafafa"
         android:layout_centerInParent="true"
-        android:id="@+id/profile_pic_image_view"
-        />
+        android:background="@drawable/circular_bg"
+        android:backgroundTint="#fafafa"
+        android:padding="4dp"
+        android:src="@drawable/profile" />
 
 </RelativeLayout>

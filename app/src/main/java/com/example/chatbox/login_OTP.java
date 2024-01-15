@@ -62,20 +62,24 @@ public class login_OTP extends AppCompatActivity {
 
         verifyOTP_btn.setOnClickListener(v -> {
             String enteredOTP = OTPEditText.getText().toString().trim();
-            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, enteredOTP);
 
-            mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        checkIfUserExists(phoneNumber);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "OTP verification failed", Toast.LENGTH_SHORT).show();
+            if (verificationId != null && !verificationId.isEmpty()) {
+                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, enteredOTP);
+
+                mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            checkIfUserExists(phoneNumber);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "OTP verification failed", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
+            } else {
+                Toast.makeText(getApplicationContext(), "Verification ID is null or empty", Toast.LENGTH_SHORT).show();
+            }
         });
-
     }
 
     private void checkIfUserExists(String phoneNumber) {
@@ -106,7 +110,6 @@ public class login_OTP extends AppCompatActivity {
                     }
                 });
     }
-
 
     private void verifyOTP(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -150,6 +153,5 @@ public class login_OTP extends AppCompatActivity {
                     }
                 });
         PhoneAuthProvider.verifyPhoneNumber(builder.build());
-
     }
 }

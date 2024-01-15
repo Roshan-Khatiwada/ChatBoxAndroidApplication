@@ -1,6 +1,7 @@
 package com.example.chatbox.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatbox.Message_interface;
 import com.example.chatbox.Model.UserModel;
 import com.example.chatbox.R;
 import com.example.chatbox.Utils.AndroidUtils;
@@ -36,6 +38,23 @@ public class SearchUserRecyclerViewAdapter extends FirestoreRecyclerAdapter<User
         if(model.getUserId().equals(FirebaseUtils.currentUserId())){
             holder.userNameTextView.setText(model.getUsername()+" (Me)");
         }
+
+        FirebaseUtils.getOtherProfilePicStorageRef(model.getUserId()).getDownloadUrl()
+                .addOnCompleteListener(t -> {
+                    if(t.isSuccessful()){
+                        Uri uri  = t.getResult();
+                        AndroidUtils.setProfilePic(context,uri,holder.profilePic);
+                    }
+                });
+
+        holder.itemView.setOnClickListener(v->{
+            Intent intent = new Intent(context , Message_interface.class);
+            intent.putExtra("username",model.getUsername());
+            intent.putExtra("phone",model.getPhone());
+            intent.putExtra("userId",model.getUserId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
 
     }
 

@@ -8,26 +8,29 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner">
+        android:background="@drawable/rounded_corner"
+        android:id="@+id/main_toolbar">
 
 
-
-    <ImageButton
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/back"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_centerVertical="true"
-        android:layout_margin="10dp"/>
-    <ImageView
-        android:layout_marginStart="10dp"
-        android:id="@+id/Profile_pic"
-        android:layout_toRightOf="@id/back_btn"
-        android:layout_width="wrap_content"
-        android:padding="10dp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/profile" />
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:srcCompat="@drawable/back" />
+        <ImageView
+            android:layout_marginStart="10dp"
+            android:id="@+id/Profile_pic"
+            android:layout_toRightOf="@id/back_btn"
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/profile" />
 
         <LinearLayout
             android:layout_centerVertical="true"
@@ -49,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:text="Active now" />
+                android:text="" />
 
 
         </LinearLayout>
@@ -88,10 +91,46 @@
 
 
     </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_toolbar"
+        android:layout_above="@id/bottom_layout"
+        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom_layout"
+        >
+
+        <EditText
+            android:id="@+id/sendMsgEdittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/sendMsgBtn"
+            android:background="@drawable/rounded_corner"
+            android:elevation="7dp"
+            android:hint="Type a Message....."
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/sendMsgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/send" />
 
 
     </RelativeLayout>
