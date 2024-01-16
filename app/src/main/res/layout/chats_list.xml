@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_toolbar"
+        android:background="#FAF9FF"
         >
 
         <TextView
@@ -19,7 +20,8 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="ChatBox"
-            android:textSize="22sp"
+            android:fontFamily="@font/baloo_bhai_2_semibold"
+            android:textSize="30sp"
             android:textStyle="bold" />
         <ImageButton
             android:layout_width="wrap_content"
@@ -32,39 +34,47 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:id="@+id/threedot"
             />
+
         <ImageButton
+            android:id="@+id/search_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/search"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toLeftOf="@+id/threedot"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:id="@+id/search_btn"
-            />
+            android:src="@drawable/search" />
 
 
     </RelativeLayout>
+
     <FrameLayout
-        android:layout_below="@+id/main_toolbar"
+        android:id="@+id/main_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_frame"
         android:layout_above="@+id/divider"
-        />
-        <com.google.android.material.divider.MaterialDivider
+        android:layout_below="@+id/main_toolbar"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="#FAF9FF" />
+
+    <com.google.android.material.divider.MaterialDivider
             android:layout_above="@id/bottom_nav"
             android:layout_width="wrap_content"
-            android:layout_height="2dp"
+            android:layout_height="0.5dp"
             android:id="@+id/divider"/>
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_nav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/bottom_menu"
-            android:layout_alignParentBottom="true"/>
 
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-2dp"
+        app:menu="@menu/bottom_menu"
+        android:background="@color/white"/>
 
 
 </RelativeLayout>

@@ -49,10 +49,10 @@
             app:srcCompat="@drawable/test_svgrepo_com" />
 
         <TextView
-            android:id="@+id/quiznamee"
+            android:id="@+id/TicTacToe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quiz"
+            android:text="TTT"
             android:fontFamily="@font/baloo_chettan"
             android:textSize="16sp"
             android:gravity="center"/>

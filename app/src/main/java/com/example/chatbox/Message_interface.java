@@ -35,6 +35,7 @@ public class Message_interface extends AppCompatActivity {
     ImageButton videoCallBtn;
     ImageButton threeDotBtn;
     RecyclerView msgRecyclerView;
+    private  String  halfUsername;
     EditText typeMsgEditText;
     ImageButton sendMsgBtn;
     TextView active;
@@ -44,14 +45,18 @@ public class Message_interface extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_interface);
+        String[] parts = getIntent().getStringExtra("username").split("\\s+");
+        if (parts.length > 0) {
+            halfUsername = parts[0];
+        } else {
+            halfUsername = getIntent().getStringExtra("username");
+        }
 
         usermodel = new UserModel();
-        usermodel.setUsername(getIntent().getStringExtra("username"));
+        usermodel.setUsername(halfUsername);
         usermodel.setPhone(getIntent().getStringExtra("phone"));
         usermodel.setUserId(getIntent().getStringExtra("userId"));
 
-
-//        chatRoomId = FirebaseUtils.currentUserId()+"_"+usermodel.getUserId();
 
         String currentUserId = FirebaseUtils.currentUserId();
         String otherUserId = usermodel.getUserId();
@@ -68,7 +73,7 @@ public class Message_interface extends AppCompatActivity {
         msgRecyclerView = findViewById(R.id.chatRecyclerView);
         typeMsgEditText = findViewById(R.id.sendMsgEdittext);
         sendMsgBtn = findViewById(R.id.sendMsgBtn);
-        active =findViewById(R.id.active);
+
         profilePic = findViewById(R.id.Profile_pic);
 
         FirebaseUtils.getOtherProfilePicStorageRef(usermodel.getUserId()).getDownloadUrl()

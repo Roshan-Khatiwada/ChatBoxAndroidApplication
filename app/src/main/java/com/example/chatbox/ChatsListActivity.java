@@ -12,13 +12,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.chatbox.Model.UserModel;
 import com.example.chatbox.Utils.FirebaseUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
 public class ChatsListActivity extends AppCompatActivity {
-    ImageButton search, threedot;
+    private UserModel currentUserModel;
+    private String username ,halfUsername;
+    ImageButton search, threedot , TTT; // TTT=Tic Tac Toe
     BottomNavigationView bottom_nav ;
     TextView appname;
 
@@ -36,6 +39,7 @@ public class ChatsListActivity extends AppCompatActivity {
 
         profile = new Profile();
         chats = new Chats();
+        halfUsername = getIntent().getStringExtra("halfUsername");
 
         threedot.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(ChatsListActivity.this);
@@ -43,6 +47,7 @@ public class ChatsListActivity extends AppCompatActivity {
             View dialogView = inflater.inflate(R.layout.three_dot_dialog, null);
 
             ImageButton quiz = dialogView.findViewById(R.id.quiz);
+            ImageButton TTT = dialogView.findViewById(R.id.tictactoe);
 
             builder.setView(dialogView);
             three_dot_dialog = builder.create();
@@ -51,8 +56,31 @@ public class ChatsListActivity extends AppCompatActivity {
                Intent intent = new Intent(ChatsListActivity.this, MainActivity.class);
                startActivity(intent);
             });
+            // on clicking TTT image button
+            TTT.setOnClickListener(view1 -> {
+                if (username != null) {
+                    String[] parts = username.split("\\s+");
+
+
+                    if (parts.length > 0) {
+                        halfUsername = parts[0];
+                    } else {
+                        halfUsername = username;
+                    }
+
+                    Intent intent = new Intent(ChatsListActivity.this, TicTacToe.class);
+                    intent.putExtra("username", halfUsername);
+                    startActivity(intent);
+                } else {
+                    // Handle the case where username is null
+                    Log.e("ChatsListActivity", "Username is null");
+                }
+            });
+
 
         });
+
+
         search.setOnClickListener(v-> startActivity(new Intent(ChatsListActivity.this, Search.class)));
 
         bottom_nav.setOnItemSelectedListener(item -> {
@@ -66,8 +94,8 @@ public class ChatsListActivity extends AppCompatActivity {
         });
 
         bottom_nav.setSelectedItemId(R.id.chats);
-        
-        
+
+        getUserUsername();
         getFCMTOken();
     }
 
@@ -78,5 +106,28 @@ public class ChatsListActivity extends AppCompatActivity {
                FirebaseUtils.currentUserDetails().update("FCMToken",token);
            }
         });
+    }
+    private void getUserUsername() {
+        FirebaseUtils.currentUserDetails().get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                currentUserModel = task.getResult().toObject(UserModel.class);
+                if (currentUserModel != null) {
+                    username = currentUserModel.getUsername().toString().trim();
+                }
+            } else {
+                Log.e("ChatsListActivity", "Error getting user details", task.getException());
+            }
+        });
+    }
+    @Override
+    protected void onStop() {
+        // Handle cleanup or resource release
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // Handle cleanup or resource release
+        super.onDestroy();
     }
 }

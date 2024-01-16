@@ -39,7 +39,7 @@ public class Search extends AppCompatActivity {
 
         search_btn.setOnClickListener(v->{
             String searchTerm = Objects.requireNonNull(username.getText()).toString();
-            if(searchTerm.isEmpty() || searchTerm.length()<3){
+            if(searchTerm.isEmpty() || searchTerm.length()<=1){
                 username.setError("Invalid Username");
                 return;
             }

@@ -110,14 +110,21 @@ public class Profile extends Fragment {
 
     }
 
-    void updateToFirestore(){
+    void updateToFirestore() {
+        if (getContext() == null) {
+            // Log an error or handle it appropriately
+            return;
+        }
+
         FirebaseUtils.currentUserDetails().set(currentUserModel)
                 .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getContext(), "Successful", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(getContext(),"Failed",Toast.LENGTH_SHORT).show();
-                    }
+                    getActivity().runOnUiThread(() -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getContext(), "Successful", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 });
     }
 

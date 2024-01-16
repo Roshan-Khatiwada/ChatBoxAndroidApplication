@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_corner"
-    android:layout_margin="10dp"
-    android:elevation="2dp">
+    android:layout_margin="3dp"
+    >
 
     <include layout="@layout/profile_pic_view"
         android:layout_width="52dp"
@@ -25,6 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:fontFamily="@font/baloo_bhai_2_semibold"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:id="@+id/user_name_text"/>
@@ -32,7 +33,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="7:00"
+                android:fontFamily="@font/baloo_bhai_2_semibold"
+                android:layout_marginEnd="6dp"
                 android:id="@+id/timeStamp"
                 android:layout_alignParentEnd="true"/>
 
@@ -42,6 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:maxLength="20"
+            android:fontFamily="@font/baloo_bhai_2_semibold"
             android:id="@+id/lastMSg_text"/>
 
     </LinearLayout>
