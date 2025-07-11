@@ -34,40 +34,41 @@ public class RecentChatsAdapter extends FirestoreRecyclerAdapter<ChatroomModel, 
     protected void onBindViewHolder(@NonNull ChatroomModelViewHolder holder, int position, @NonNull ChatroomModel model) {
         FirebaseUtils.getOtheruserFormChatroom(model.getUserIds())
                 .get().addOnCompleteListener(task -> {
-                         if(task.isSuccessful()){
-                             boolean lastMessageSender = model.getLastMessageSenderId().equals(FirebaseUtils.currentUserId());
+                    if(task.isSuccessful()){
+                        boolean lastMessageSender = model.getLastMessageSenderId().equals(FirebaseUtils.currentUserId());
 
-                             UserModel otheruserModel = task.getResult().toObject(UserModel.class);
+                        UserModel otheruserModel = task.getResult().toObject(UserModel.class);
 
-                             FirebaseUtils.getOtherProfilePicStorageRef(otheruserModel.getUserId()).getDownloadUrl()
-                                     .addOnCompleteListener(t -> {
-                                         if(t.isSuccessful()){
-                                             Uri uri  = t.getResult();
-                                             AndroidUtils.setProfilePic(context,uri,holder.profilePic);
-                                         }
-                                     });
+                        // Add a null check for otheruserModel
+                        if (otheruserModel != null) {
+                            FirebaseUtils.getOtherProfilePicStorageRef(otheruserModel.getUserId()).getDownloadUrl()
+                                    .addOnCompleteListener(t -> {
+                                        if(t.isSuccessful()){
+                                            Uri uri  = t.getResult();
+                                            AndroidUtils.setProfilePic(context,uri,holder.profilePic);
+                                        }
+                                    });
 
-                             assert otheruserModel != null;
-                             holder.userNameTextView.setText(otheruserModel.getUsername());
-                                if(lastMessageSender){
-                                    holder.recentText.setText("You : "+model.getLastMessage());
-                                }
-                                else{
-                                    holder.recentText.setText(model.getLastMessage());
+                            holder.userNameTextView.setText(otheruserModel.getUsername());
+                            if(lastMessageSender){
+                                holder.recentText.setText("You : "+model.getLastMessage());
+                            }
+                            else{
+                                holder.recentText.setText(model.getLastMessage());
+                            }
+                            holder.timeStamp.setText(FirebaseUtils.timestampToString(model.getLastMessageTimestamp()));
 
-                                }
-                             holder.timeStamp.setText(FirebaseUtils.timestampToString(model.getLastMessageTimestamp()));
-
-                                holder.itemView.setOnClickListener(view -> {
-                                    Intent intent = new Intent(context, Message_interface.class);
-                                    AndroidUtils.passUserModelAsIntent(intent,otheruserModel);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    context.startActivity(intent);
-                                });
-
-                         }
+                            holder.itemView.setOnClickListener(view -> {
+                                Intent intent = new Intent(context, Message_interface.class);
+                                AndroidUtils.passUserModelAsIntent(intent,otheruserModel);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+                            });
+                        }
+                    }
                 });
     }
+
 
     @NonNull
     @Override
