@@ -11,17 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/main_toolbar"
-        android:background="#FAF9FF"
+        android:background="#00E8D8D3"
+        android:elevation="5dp"
         >
 
         <TextView
             android:id="@+id/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:fontFamily="@font/alata"
+            android:padding="5dp"
             android:text="ChatBox"
-            android:fontFamily="@font/baloo_bhai_2_semibold"
-            android:textSize="30sp"
+            android:textColor="#434141"
+            android:textSize="25sp"
             android:textStyle="bold" />
         <ImageButton
             android:layout_width="wrap_content"
@@ -49,6 +51,7 @@
             android:src="@drawable/search" />
 
 
+
     </RelativeLayout>
 
     <FrameLayout
@@ -59,12 +62,13 @@
         android:layout_below="@+id/main_toolbar"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        android:background="#FAF9FF" />
+        android:background="#fff "
+        />
 
     <com.google.android.material.divider.MaterialDivider
             android:layout_above="@id/bottom_nav"
             android:layout_width="wrap_content"
-            android:layout_height="0.5dp"
+            android:layout_height="0.8dp"
             android:id="@+id/divider"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -74,7 +78,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-2dp"
         app:menu="@menu/bottom_menu"
-        android:background="@color/white"/>
+
+        android:background="#00E8D8D3"/>
 
 
 </RelativeLayout>

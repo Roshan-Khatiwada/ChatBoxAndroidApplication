@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#FFFFFF"
     android:layout_height="match_parent"
     tools:context=".Search">
 
@@ -17,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:fontFamily="@font/ubuntu"
             android:text="Search"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -52,6 +54,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username_edittext"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/ubuntu"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>

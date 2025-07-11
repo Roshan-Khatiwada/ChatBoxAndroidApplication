@@ -6,7 +6,7 @@
     <!-- Background color -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#345C5959" /> <!-- Set your background color here -->
+            <solid android:color="#00FFFCFC" /> <!-- Set your background color here -->
             <corners android:radius="20dp" /> <!-- Set the corner radius for rounded corners -->
         </shape>
     </item>
@@ -17,7 +17,7 @@
             <solid android:color="#00FFFFFF" /> <!-- Transparent color for the inside area -->
             <stroke
                 android:width="0dp"
-                android:color="@color/colorPrimaryDark" />
+                android:color="#00FFFFFF" />
             <corners android:radius="10dp" />
         </shape>
     </item>

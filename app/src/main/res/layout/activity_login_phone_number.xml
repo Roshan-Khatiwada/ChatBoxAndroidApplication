@@ -122,17 +122,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10">
+
         <Button
+            android:id="@+id/sendOTPbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/secondary"
+            android:fontFamily="@font/baloo_chettan"
             android:text="Send OTP"
             android:textColor="@color/white"
-            android:fontFamily="@font/baloo_chettan"
-            android:textSize="16sp"
-            android:backgroundTint="@color/secondary"
-            android:layout_margin="20dp"
-            android:id="@+id/sendOTPbtn"
-            />
+            android:textSize="16sp" />
     </LinearLayout>
 
     <ProgressBar

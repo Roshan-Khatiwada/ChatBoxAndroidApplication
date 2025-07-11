@@ -1,58 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/black"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp">
+    android:paddingLeft="3dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="2dp"
+    android:paddingTop="2dp"
+    >
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp">
+
+
+    <LinearLayout
+        android:id="@+id/whole_leftLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="#FE3C71"
-        android:padding="10dp"
-        android:layout_marginEnd="80dp"
+        android:layout_gravity="bottom"
+       >
 
-        android:id="@+id/left_message_layout"
-        tools:ignore="RelativeOverlap"
-        >
+        <ImageView
+            android:id="@+id/receiver_chat_img"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="3dp"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
 
-        <TextView
+            android:src="@drawable/profile" />
+
+
+        <LinearLayout
+            android:id="@+id/left_chat_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:text=""
-            android:id="@+id/left_message_textview"
-            />
+            android:background="@drawable/message_round"
+            android:backgroundTint="#8250FF"
+
+            android:orientation="vertical"
+            android:paddingLeft="11dp"
+            android:paddingTop="6dp"
+            android:paddingRight="11dp"
+            android:paddingBottom="7dp">
+
+            <TextView
+                android:id="@+id/left_chat_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/left_image"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/whole_leftLayout" />
+        <TextView
+            android:id="@+id/receiverTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:fontFamily="@font/ubuntu"
+            android:text=""
+            android:textColor="#B2000000"
+            android:textSize="7sp" />
+    </LinearLayout>
     <LinearLayout
+        android:id="@+id/whole_rightLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner"
-        android:backgroundTint="#8250FF"
-        android:padding="10dp"
-        android:layout_marginEnd="5dp"
-        android:id="@+id/right_message_layout"
-        android:layout_alignParentEnd="true"
-
         android:layout_marginStart="80dp"
+        android:layout_alignParentEnd="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#B2000000"
+            android:textSize="7sp"
+            android:layout_marginEnd="4dp"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/ubuntu"
 
-    >
+            android:layout_alignParentStart="true"
+            android:id="@+id/senderTime"/>
 
-    <TextView
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/right_chat_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/message_round"
+            android:backgroundTint="#FE3C71"
+            android:paddingLeft="11dp"
+            android:paddingRight="11dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="7dp">
+
+            <TextView
+                android:id="@+id/right_chat_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/baloo_bhaina_2"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="18sp"
+        android:layout_below="@+id/whole_rightLayout"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/right_image"
+        />
 
-        android:text=""
-        android:id="@+id/right_message_textview"
-        tools:ignore="HardcodedText" />
 
-</LinearLayout>
-
-    </RelativeLayout>
+</RelativeLayout>

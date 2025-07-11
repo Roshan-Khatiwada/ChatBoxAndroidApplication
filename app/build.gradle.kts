@@ -24,6 +24,9 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+     buildFeatures {
+     viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -53,5 +56,13 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    //implementation ("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:3.2.2")
+
+    implementation("com.karumi:dexter:6.2.1")
+    implementation ("com.firebaseui:firebase-ui-database:8.0.2")
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("com.vanniktech:emoji-google:0.7.0")
+
+
 
 }

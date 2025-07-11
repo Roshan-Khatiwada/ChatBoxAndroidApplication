@@ -3,7 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_corner"
-    android:layout_margin="3dp"
+    android:backgroundTint="#fff"
+    android:layout_marginRight="3dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginTop="8dp"
+    android:elevation="1dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
     >
 
     <include layout="@layout/profile_pic_view"
@@ -21,20 +28,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
+                android:id="@+id/user_name_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/alata"
                 android:text=""
-                android:fontFamily="@font/baloo_bhai_2_semibold"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:id="@+id/user_name_text"/>
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="7:00"
-                android:fontFamily="@font/baloo_bhai_2_semibold"
+                android:fontFamily="@font/ubuntu"
                 android:layout_marginEnd="6dp"
                 android:id="@+id/timeStamp"
                 android:layout_alignParentEnd="true"/>
@@ -46,7 +54,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:maxLength="20"
-            android:fontFamily="@font/baloo_bhai_2_semibold"
+            android:fontFamily="@font/ubuntu"
             android:id="@+id/lastMSg_text"/>
 
     </LinearLayout>

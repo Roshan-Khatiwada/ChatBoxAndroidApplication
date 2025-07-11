@@ -21,8 +21,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class
-login_phoneNumber extends AppCompatActivity {
+// Activity for user phone number verification
+public class login_phoneNumber extends AppCompatActivity {
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
@@ -33,6 +33,7 @@ login_phoneNumber extends AppCompatActivity {
     FirebaseAuth mAuth;
     String verificationId;
     String number;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,32 +48,33 @@ login_phoneNumber extends AppCompatActivity {
 
         progressBar.setVisibility(View.GONE);
 
+        // Set up the spinner for selecting region
         setupRegionSpinner();
 
         sendOTPBtn.setOnClickListener(view -> {
-            if(validatePhoneNumber()){
-                Intent intent = new Intent(login_phoneNumber.this,login_OTP.class);
-                intent.putExtra("phoneNumber",phoneNumberEditText.getText().toString().trim());
+            if (validatePhoneNumber()) {
+                // If phone number is valid, proceed to OTP verification activity
+                Intent intent = new Intent(login_phoneNumber.this, login_OTP.class);
+                intent.putExtra("phoneNumber", phoneNumberEditText.getText().toString().trim());
                 startActivity(intent);
             }
         });
-
     }
 
-
-
+    // Set up the spinner with regions
     private void setupRegionSpinner() {
-        String[] regions = {"NP"};
+        String[] regions = {"NP"}; // Add other regions as needed
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, regions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         regionSpinner.setAdapter(adapter);
     }
 
-
+    // Validate the entered phone number
     private boolean validatePhoneNumber() {
         String phoneNumber = phoneNumberEditText.getText().toString().trim();
         String selectedRegion = regionSpinner.getSelectedItem().toString();
 
+        // Validate the phone number using a custom validator class
         if (PhoneNumberValidator.isValidPhoneNumber(phoneNumber, selectedRegion)) {
             showToast("Valid phone number");
             return true;
@@ -82,6 +84,7 @@ login_phoneNumber extends AppCompatActivity {
         }
     }
 
+    // Show a toast message
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

@@ -31,12 +31,13 @@ public class Category extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
-   private List<CategoryModel> list;
+    private List<CategoryModel> list;
 
-   private Dialog loadingdialog;
-   Button back;
+    private Dialog loadingdialog;
+    Button back;
 
     private RecyclerView recyclerView;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class Category extends AppCompatActivity {
         // Toolbar setup for the activity.
         Toolbar toolbar = findViewById(R.id.toobar);
         setSupportActionBar(toolbar);
-        back=findViewById(R.id.back);
+        back = findViewById(R.id.back);
 
         // Set the title of the toolbar to "Categories".
         getSupportActionBar().setTitle("");
@@ -55,18 +56,18 @@ public class Category extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Category.this,ChatsListActivity.class);
+                Intent intent = new Intent(Category.this, ChatsListActivity.class);
                 startActivity(intent);
             }
         });
 
         // Find the RecyclerView in the layout and assign it to the 'recyclerView' variable.
         recyclerView = findViewById(R.id.rv);
-        loadingdialog=new Dialog(this);
+        loadingdialog = new Dialog(this);
         loadingdialog.setContentView(R.layout.loading);
-        loadingdialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        loadingdialog.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-            loadingdialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.roundcorners));
+        loadingdialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.roundcorners));
 
         loadingdialog.setCancelable(false);
         // Create a LinearLayoutManager for the RecyclerView to arrange items in a vertical orientation.
@@ -77,7 +78,7 @@ public class Category extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // Create a list of CategoryModel objects representing different categories.
-        List<CategoryModel> list = new ArrayList<>();
+        list = new ArrayList<>();
 
 
         // Create a CategoryAdapter with the list of categories and set it to the RecyclerView.
@@ -103,8 +104,6 @@ public class Category extends AppCompatActivity {
                 finish();
             }
         });
-
-
 
     }
 

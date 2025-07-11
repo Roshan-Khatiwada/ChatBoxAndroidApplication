@@ -1,10 +1,14 @@
 package com.example.chatbox;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -25,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.concurrent.TimeUnit;
 
+// Activity for OTP verification during login
 public class login_OTP extends AppCompatActivity {
     private Toolbar toolbar;
     private EditText OTPEditText;
@@ -35,6 +40,7 @@ public class login_OTP extends AppCompatActivity {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private PhoneAuthProvider.ForceResendingToken resendingToken;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    Dialog loading2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,13 @@ public class login_OTP extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        loading2=new Dialog(this);
+        loading2.setContentView(R.layout.loading2);
+        loading2.getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        loading2.getWindow().setBackgroundDrawable(getDrawable(R.drawable.roundcorners));
+
+        loading2.setCancelable(false);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +83,7 @@ public class login_OTP extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            loading2.show(); // Show loading dialog
                             checkIfUserExists(phoneNumber);
                         } else {
                             Toast.makeText(getApplicationContext(), "OTP verification failed", Toast.LENGTH_SHORT).show();
@@ -82,6 +96,7 @@ public class login_OTP extends AppCompatActivity {
         });
     }
 
+    // Check if the user exists in the database
     private void checkIfUserExists(String phoneNumber) {
         db.collection("Registration")
                 .whereEqualTo("phone", phoneNumber)
@@ -107,11 +122,14 @@ public class login_OTP extends AppCompatActivity {
                             // Handle error
                             Toast.makeText(login_OTP.this, "Error checking user existence", Toast.LENGTH_SHORT).show();
                         }
+                        loading2.dismiss(); // Dismiss loading dialog
                     }
                 });
     }
 
+    // Verify OTP entered by the user
     private void verifyOTP(PhoneAuthCredential credential) {
+        loading2.show(); // Show loading dialog before verifying OTP
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -124,10 +142,12 @@ public class login_OTP extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "OTP verification failed", Toast.LENGTH_SHORT).show();
                 }
+                loading2.dismiss(); // Dismiss loading dialog after OTP verification is completed
             }
         });
     }
 
+    // Send OTP to the user's phone number
     private void sendOTP(String phoneNumber) {
         PhoneAuthOptions.Builder builder = PhoneAuthOptions.newBuilder(mAuth)
                 .setPhoneNumber("+977" + phoneNumber)
@@ -141,6 +161,7 @@ public class login_OTP extends AppCompatActivity {
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
+                        loading2.dismiss(); // Dismiss loading dialog if OTP verification fails
                         Toast.makeText(getApplicationContext(), "OTP verification failed", Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -154,4 +175,5 @@ public class login_OTP extends AppCompatActivity {
                 });
         PhoneAuthProvider.verifyPhoneNumber(builder.build());
     }
+
 }

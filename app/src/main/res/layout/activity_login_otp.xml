@@ -109,6 +109,7 @@
             android:elevation="10dp"
             android:hint="OTP"
             android:inputType="phone"
+            android:maxLength="6"
             android:minHeight="48dp"
             android:padding="10dp" />
 

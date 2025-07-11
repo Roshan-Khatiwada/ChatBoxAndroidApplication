@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval">
+
+        <!-- Set the desired background color -->
+        <solid android:color="#FFC107" />
+
+        <!-- Adjust the stroke attributes with a smaller width -->
+        <stroke
+            android:color="#4C2C2C"
+            android:width="2dp" />
+
+    </shape>
+</selector>

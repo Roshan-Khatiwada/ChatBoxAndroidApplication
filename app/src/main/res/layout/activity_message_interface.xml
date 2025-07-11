@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/relative"
     android:layout_height="match_parent"
     tools:context=".Message_interface">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#ffffff"
         android:background="@drawable/rounded_corner"
         android:id="@+id/main_toolbar">
 
@@ -44,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo_bhai_2_semibold"
+                android:fontFamily="@font/alata"
                 android:text="Username"
                 android:textSize="20sp" />
 
@@ -57,24 +59,21 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true">
-            <ImageButton
+
+            <Button
                 android:id="@+id/audio_call_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/audio_call" />
-            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/button"
+                />
+
+            <Button
                 android:id="@+id/video_call_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/video_call" />
-
-
-
-
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="25dp"
+                />
         </LinearLayout>
 
 
@@ -82,10 +81,13 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/main_toolbar"
+        android:background="#EDDDD8"
         android:layout_above="@id/bottom_layout"
         />
     <com.google.android.material.divider.MaterialDivider
@@ -99,16 +101,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:id="@+id/bottom_layout"
-        android:background="#75FFFFFF"
+        android:background="#fff"
         >
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/voice_msg"
+            android:id="@+id/emoji"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:src="@drawable/voice"
+            android:src="@drawable/emoji_smile_svgrepo_com"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             />
@@ -120,7 +122,7 @@
             android:id="@+id/send_img"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:layout_toRightOf="@+id/voice_msg"
+            android:layout_toRightOf="@+id/emoji"
             android:src="@drawable/image"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -131,16 +133,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="10dp"
             android:layout_toLeftOf="@id/sendMsgBtn"
             android:layout_toRightOf="@+id/send_img"
             android:background="@drawable/rounded_corner"
-            android:elevation="3dp"
+            android:elevation="1dp"
             android:hint="Type a Message....."
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textSize="18dp" />
 
         <ImageButton
             android:id="@+id/sendMsgBtn"

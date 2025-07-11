@@ -35,8 +35,6 @@ public class RecentChatsAdapter extends FirestoreRecyclerAdapter<ChatroomModel, 
         FirebaseUtils.getOtheruserFormChatroom(model.getUserIds())
                 .get().addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
-                        boolean lastMessageSender = model.getLastMessageSenderId().equals(FirebaseUtils.currentUserId());
-
                         UserModel otheruserModel = task.getResult().toObject(UserModel.class);
 
                         // Add a null check for otheruserModel
@@ -46,16 +44,24 @@ public class RecentChatsAdapter extends FirestoreRecyclerAdapter<ChatroomModel, 
                                         if(t.isSuccessful()){
                                             Uri uri  = t.getResult();
                                             AndroidUtils.setProfilePic(context,uri,holder.profilePic);
+
                                         }
                                     });
 
                             holder.userNameTextView.setText(otheruserModel.getUsername());
+
+                            // Check if the current user sent the last message
+                            boolean lastMessageSender = model.getLastMessageSenderId().equals(FirebaseUtils.currentUserId());
+
                             if(lastMessageSender){
+                                // Set UI for the current user's chat (e.g., at the top)
                                 holder.recentText.setText("You : "+model.getLastMessage());
                             }
                             else{
+                                // Set UI for the other user's chat (e.g., at the bottom)
                                 holder.recentText.setText(model.getLastMessage());
                             }
+
                             holder.timeStamp.setText(FirebaseUtils.timestampToString(model.getLastMessageTimestamp()));
 
                             holder.itemView.setOnClickListener(view -> {
@@ -68,6 +74,7 @@ public class RecentChatsAdapter extends FirestoreRecyclerAdapter<ChatroomModel, 
                     }
                 });
     }
+
 
 
     @NonNull

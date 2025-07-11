@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/aclonica</item>
+        <item>@font/alata</item>
+        <item>@font/ayt</item>
         <item>@font/baloo_bhai_2_semibold</item>
         <item>@font/baloo_bhaina_2</item>
+        <item>@font/baloo_bhaina_2_medium</item>
         <item>@font/baloo_chettan</item>
+        <item>@font/ubu</item>
+        <item>@font/ubuntu</item>
+        <item>@font/ubuntu_mono</item>
+        <item>@font/ubuntuu</item>
+        <item>@font/utuali</item>
     </array>
 </resources>
